@@ -29,7 +29,7 @@ public class FornecedorController {
 
     @PostMapping("/cadastrar")
     public List<Fornecedor> cadastrar(@RequestBody Fornecedormodel model) {
-        LIST.add(new Fornecedor(model.getNome(), model.getAniver(), model.getCnpj(),model.getID()));
+        LIST.add(new Fornecedor(model.getNome(), model.getAniver(), model.getCnpj(),model.getID(), model.getIdade()));
         return LIST;
     }
 
@@ -37,7 +37,7 @@ public class FornecedorController {
     public List<Fornecedor> remover(@PathVariable Integer index, @RequestBody Fornecedormodel model) {
         var contato = LIST.get(index);
         LIST.remove(contato);
-        LIST.add(new Fornecedor(model.getNome(), model.getAniver(), model.getCnpj(),model.getID()));
+        LIST.add(new Fornecedor(model.getNome(), model.getAniver(), model.getCnpj(),model.getID(), model.getIdade()));
         return LIST;
     }
 

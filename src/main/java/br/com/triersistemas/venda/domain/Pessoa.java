@@ -15,6 +15,7 @@ public abstract class Pessoa {
     private LocalDate aniver;
 
     private Integer ID;
+    private Long idade;
 
     protected Pessoa() {
         this.aniver = LocalDate.now();

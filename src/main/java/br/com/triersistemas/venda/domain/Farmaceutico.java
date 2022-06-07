@@ -12,7 +12,7 @@ public class Farmaceutico extends PessoaFisica {
         this.promocaoDia = gerarPromocaoDia();
     }
 
-    public Farmaceutico(final String nome, final LocalDate aniver, final String cpf, final int ID){
+    public Farmaceutico(final String nome, final LocalDate aniver, final String cpf, final int ID,final int idade){
         super(nome, aniver, cpf);
         this.promocaoDia = gerarPromocaoDia();
     }

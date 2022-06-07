@@ -29,7 +29,7 @@ public class FarmaceuticoController {
 
     @PostMapping("/cadastrar")
     public List<Farmaceutico> cadastrar(@RequestBody Farmaceuticomodel model) {
-        LIST.add(new Farmaceutico(model.getNome(), model.getAniver(), model.getCpf(), model.getID()));
+        LIST.add(new Farmaceutico(model.getNome(), model.getAniver(), model.getCpf(), model.getID(),model.getIdade()));
         return LIST;
     }
 
@@ -37,7 +37,7 @@ public class FarmaceuticoController {
     public List<Farmaceutico> remover(@PathVariable Integer index, @RequestBody Farmaceuticomodel model) {
         var contato = LIST.get(index);
         LIST.remove(contato);
-        LIST.add(new Farmaceutico(model.getNome(), model.getAniver(), model.getCpf(),model.getID()));
+        LIST.add(new Farmaceutico(model.getNome(), model.getAniver(), model.getCpf(),model.getID(), model.getIdade()));
         return LIST;
     }
 

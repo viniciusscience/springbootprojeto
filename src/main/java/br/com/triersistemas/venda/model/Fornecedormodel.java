@@ -10,4 +10,5 @@ public class Fornecedormodel {
     private LocalDate aniver;
     private String cnpj;
     private int ID;
+    private int idade;
 }
