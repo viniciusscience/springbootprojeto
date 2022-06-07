@@ -34,6 +34,20 @@ public abstract class Pessoa {
         this.nome = nomes.get(rd.nextInt(0, nomes.size()));
         var num = new SplittableRandom();
         this.ID = num.nextInt(0, 10);
+        int[] vetor1 = new int[10];
+        int[] vetor2 = new int[10];
+        for (int i = 0; i < vetor1.length; i++) {
+            for (int j = 0; i < vetor2.length; i++) {
+                vetor1[i] = num.nextInt(0, 100);
+                vetor2[j] = num.nextInt(0, 100);
+             if (vetor1[i] == vetor2[j]){
+                 vetor1[i] = Integer.parseInt(null);
+             } else{
+                 vetor1[i]!=vetor2[j];
+             }
+            }
+
+        }
 
 
     }
