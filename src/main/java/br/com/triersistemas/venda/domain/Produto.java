@@ -11,9 +11,9 @@ public class Produto {
 
 
     public Produto(final String nome,final UUID id,final double valor) {
-        this.id = this.id;
-        this.nome = this.nome;
-        this.valor = this.valor;
+        this.id = id;
+        this.nome = nome;
+        this.valor =valor;
 
     }
     public Produto(){
