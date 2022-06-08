@@ -1,16 +1,16 @@
 package br.com.triersistemas.venda.model;
 
-
 import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
-public class Farmaceuticomodel {
+public class ClienteModel {
 
+    private UUID id;
     private String nome;
-    private LocalDate aniver;
     private String cpf;
-    private int idade;
+    private LocalDate aniver;
+
 }
