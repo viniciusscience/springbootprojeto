@@ -25,7 +25,7 @@ public class Cliente extends PessoaFisica{
     public Cliente() {
         this.id = UUID.randomUUID();
         this.nome = StringUtils.getRandomName();
-        this.cpf = getDocumento();
+
 
     }
 }

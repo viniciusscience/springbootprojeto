@@ -1,6 +1,7 @@
 package br.com.triersistemas.venda.controller;
 
 import br.com.triersistemas.venda.domain.Cliente;
+import br.com.triersistemas.venda.domain.Farmaceutico;
 import br.com.triersistemas.venda.domain.Produto;
 import br.com.triersistemas.venda.exceptions.NaoExisteException;
 import br.com.triersistemas.venda.helper.StringUtils;
@@ -17,6 +18,7 @@ import java.util.UUID;
 public class ProdutoController {
     private static final List<Produto> LISTA = new ArrayList<>();
 
+
     @GetMapping("/consultar")
     public List<Produto> consultar() {
         return LISTA;
@@ -24,6 +26,7 @@ public class ProdutoController {
 
     @PostMapping("/cadastrar-randon")
     public List<Produto> cadastrarRandon() {
+
         LISTA.add(new Produto());
         return LISTA;
     }
