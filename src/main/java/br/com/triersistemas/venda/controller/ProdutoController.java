@@ -16,45 +16,37 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController {
-    private static final List<Produto> LISTA = new ArrayList<>();
 
+    public static final List<Produto> LIST = new ArrayList<>();
 
     @GetMapping("/consultar")
     public List<Produto> consultar() {
-        return LISTA;
-    }
-
-    @PostMapping("/cadastrar-randon")
-    public List<Produto> cadastrarRandon() {
-
-        LISTA.add(new Produto());
-        return LISTA;
+        return LIST;
     }
 
     @PostMapping("/cadastrar")
-    public List<Produto> cadastrar(@RequestBody ProdutoModel model) {
-        LISTA.add(new Produto(model.getNome(),model.getId(), model.getValor()));
-        return LISTA;
+    public Produto cadastrar(@RequestBody ProdutoModel model) {
+        var domain = new Produto(model.getNome(), model.getValor());
+        LIST.add(domain);
+        return domain;
     }
 
     @PutMapping("/alterar/{id}")
-    public List<Produto> remover(@PathVariable UUID id, @RequestBody ProdutoModel model) {
-        var domain = LISTA.stream()
+    public Produto remover(@PathVariable UUID id, @RequestBody ProdutoModel model) {
+        var domain = LIST.stream()
                 .filter(x -> x.getId().equals(id))
                 .findFirst()
                 .orElseThrow(NaoExisteException::new);
-        domain.editar(model.getNome(), model.getValor(), model.getId());
-        return LISTA;
+        return domain.editar(model.getNome(), model.getValor());
     }
 
     @DeleteMapping("/remover/{id}")
-    public List<Produto> remover(@PathVariable UUID id) {
-        var domain = LISTA.stream()
+    public Produto remover(@PathVariable UUID id) {
+        var domain = LIST.stream()
                 .filter(x -> x.getId().equals(id))
                 .findFirst()
                 .orElseThrow(NaoExisteException::new);
-        LISTA.remove(domain);
-        return LISTA;
+        LIST.remove(domain);
+        return domain;
     }
 }
-

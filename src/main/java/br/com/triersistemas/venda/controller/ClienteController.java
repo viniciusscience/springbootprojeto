@@ -17,42 +17,37 @@ import java.util.UUID;
 @RequestMapping("/cliente")
 public class ClienteController {
 
-    private static final List<Cliente> LISTA = new ArrayList<>();
+    public static final List<Cliente> LIST = new ArrayList<>();
 
     @GetMapping("/consultar")
     public List<Cliente> consultar() {
-        return LISTA;
-    }
-
-    @PostMapping("/cadastrar-randon")
-    public List<Cliente> cadastrarRandon() {
-        LISTA.add(new Cliente());
-        return LISTA;
+        return LIST;
     }
 
     @PostMapping("/cadastrar")
-    public List<Cliente> cadastrar(@RequestBody Farmaceuticomodel farmaceuticomodel) {
-        LISTA.add(new Cliente());
-        return LISTA;
+    public Cliente cadastrar(@RequestBody ClienteModel model) {
+        var domain = new Cliente(model.getNome(), model.getAniver(), model.getCpf(), model.getEmail());
+        LIST.add(domain);
+        return domain;
     }
 
     @PutMapping("/alterar/{id}")
-    public List<Cliente> remover(@PathVariable UUID id, @RequestBody ClienteModel clientemodel) {
-        var domain = LISTA.stream()
+    public Cliente remover(@PathVariable UUID id, @RequestBody ClienteModel model) {
+        var domain = LIST.stream()
                 .filter(x -> x.getId().equals(id))
                 .findFirst()
                 .orElseThrow(NaoExisteException::new);
-        domain.editar(clientemodel.getNome(),clientemodel.getAniver(),clientemodel.getCpf());
-        return LISTA;
+        domain.editar(model.getNome(), model.getAniver(), model.getCpf(), model.getEmail());
+        return domain;
     }
 
     @DeleteMapping("/remover/{id}")
-    public List<Cliente> remover(@PathVariable UUID id) {
-        var domain = LISTA.stream()
+    public Cliente remover(@PathVariable UUID id) {
+        var domain = LIST.stream()
                 .filter(x -> x.getId().equals(id))
                 .findFirst()
                 .orElseThrow(NaoExisteException::new);
-        LISTA.remove(domain);
-        return LISTA;
+        LIST.remove(domain);
+        return domain;
     }
 }

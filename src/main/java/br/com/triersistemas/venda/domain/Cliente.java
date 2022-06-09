@@ -1,31 +1,27 @@
 package br.com.triersistemas.venda.domain;
 
 import br.com.triersistemas.venda.helper.StringUtils;
+import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
-public class Cliente extends PessoaFisica{
+@Getter
+public class Cliente extends PessoaFisica {
 
-    private UUID id;
-    String nome;
-    String cpf;
+    private String email;
 
-    public UUID getId() {
-        return id;
+    public Cliente(final String nome,
+                   final LocalDate aniver,
+                   final String cpf,
+                   final String email) {
+        super(nome, aniver, cpf);
+        this.email = email;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public Cliente() {
-        this.id = UUID.randomUUID();
-        this.nome = StringUtils.getRandomName();
-
-
+    public Cliente editar(final String nome, final LocalDate aniver, final String cpf, final String email) {
+        super.editar(nome, aniver, cpf);
+        this.email = email;
+        return this;
     }
 }
